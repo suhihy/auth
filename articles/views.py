@@ -44,6 +44,13 @@ def detail(request, id):
 
     return render(request, 'detail.html', context)
 
+def delete(request, id):
+    article = Article.objects.get(id=id)
+    if request.user == article.user:
+        article.delete()
+
+    return redirect('articles:index')
+
 @login_required
 def comment_create(request, article_id):
     form = CommentForm(request.POST)
@@ -71,4 +78,3 @@ def comment_delete(request, article_id, id):
         comment.delete()
 
     return redirect('articles:detail', id=article_id)
-    
