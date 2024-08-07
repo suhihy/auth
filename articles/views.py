@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from .forms import ArticleForm, CommentForm
-from .models import Article
+from .models import Article, Comment
 from django.contrib.auth.decorators import login_required
 
 # Create your views here.
@@ -64,4 +64,10 @@ def comment_create(request, article_id):
 
         return redirect('articles:detail', id=article_id)
 
+@login_required
+def comment_delete(request, article_id, id):
+    comment = Comment.objects.get(id=id)
+    comment.delete()
+
+    return redirect('articles:detail', id=article_id)
     
