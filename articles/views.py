@@ -67,7 +67,8 @@ def comment_create(request, article_id):
 @login_required
 def comment_delete(request, article_id, id):
     comment = Comment.objects.get(id=id)
-    comment.delete()
+    if request.user == comment.user:
+        comment.delete()
 
     return redirect('articles:detail', id=article_id)
     
