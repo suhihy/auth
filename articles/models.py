@@ -19,3 +19,8 @@ class Article(models.Model):
     # user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
 
     # user_id = 자동으로 생성
+
+class Comment(models.Model):
+    content = models.TextField()
+    article = models.ForeignKey(Article, on_delete=models.CASCADE)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
