@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load bootstrap5 %}
+
+{% block body %}
+
+    <h1 class="my-3">{{user_profile}}</h1>
+    <h5>{{user_profile}}님이 작성한 article</h5>
+    {% for article in user_profile.article_set.all %}
+        <p>{{article.title}}</p>
+    {% endfor %}
+    <hr>
+    <h5>{{user_profile}}님이 작성한 comments</h5>
+    {% for comment in user_profile.comment_set.all %}
+        <p>{{comment.content}}</p>
+    {% endfor %}
+
+{% endblock %}
