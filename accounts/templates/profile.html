@@ -11,7 +11,7 @@
     <hr>
     <h5>{{user_profile}}님이 작성한 comments</h5>
     {% for comment in user_profile.comment_set.all %}
-        <p>{{comment.content}}</p>
+        <p>{{comment.article_id}} : {{comment.content}}</p>
     {% endfor %}
 
 {% endblock %}
