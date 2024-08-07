@@ -64,6 +64,4 @@ def comment_create(request, article_id):
 
         return redirect('articles:detail', id=article_id)
 
-    else:
-        pass
     
